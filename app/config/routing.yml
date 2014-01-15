@@ -1,0 +1,4 @@
+balance_scrapy:
+    resource: "@BalanceScrapyBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,7 @@
+parameters:
+#    balance_scrapy.example.class: Balance\ScrapyBundle\Example
+
+services:
+#    balance_scrapy.example:
+#        class: %balance_scrapy.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
