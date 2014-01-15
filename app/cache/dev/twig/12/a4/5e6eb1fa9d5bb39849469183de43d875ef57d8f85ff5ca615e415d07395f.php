@@ -49,68 +49,60 @@ class __TwigTemplate_12a45e6eb1fa9d5bb39849469183de43d875ef57d8f85ff5ca615e415d0
     {
         // line 8
         echo "    <h2>Spider Settings</h2>
-    <div id=\"wizard\">
-        <ol>
-            <li>URL Settings</li>
-            <li>Content Settings</li>
-            <li>Unordered List</li>
-            <li>Kitchen Sink</li>
-        </ol>
-        <div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-        </div>
-        <div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-        </div>
-        <div>
-            <ul>
-                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                <li>Aliquam tincidunt mauris eu risus.</li>
-                <li>Vestibulum auctor dapibus neque.</li>
-            </ul>
-        </div>
-        <div>
-            <h1>Kitchen Sink</h1>
-
-            <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href=\"#\">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-
-            <h2>Header Level 2</h2>
+    <form class=\"form-horizontal\" role=\"form\">
+        <div id=\"wizard\">
 
             <ol>
-                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                <li>Aliquam tincidunt mauris eu risus.</li>
+                <li>URL Settings</li>
+                <li>Category Settings</li>
+                <li>Product Settings</li>
             </ol>
+            <div>
+                <div class=\"form-group\">
+                    <label for=\"inputEmail3\" class=\"col-sm-2 control-label\">URL spider site</label>
+                    <div class=\"col-sm-10\">
+                        <input type=\"email\" class=\"form-control\" id=\"inputEmail3\">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class=\"form-group\">
+                    <label for=\"inputEmail3\" class=\"col-sm-2 control-label\">Category Pattern</label>
+                    <div class=\"col-sm-10\">
+                        <input type=\"email\" class=\"form-control\" id=\"inputEmail3\">
+                    </div>
+                </div>
+                <div class=\"form-group\">
+                    <label for=\"inputEmail3\" class=\"col-sm-2 control-label\">Product Pattern</label>
+                    <div class=\"col-sm-10\">
+                        <input type=\"email\" class=\"form-control\" id=\"inputEmail3\">
+                    </div>
+                </div>
+                <div class=\"form-group\">
+                    <label for=\"inputEmail3\" class=\"col-sm-2 control-label\">Next URL Pattern</label>
+                    <div class=\"col-sm-10\">
+                        <input type=\"email\" class=\"form-control\" id=\"inputEmail3\">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>Product Settings</p>
+            </div>
 
-            <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
-
-            <h3>Header Level 3</h3>
-
-            <ul>
-                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                <li>Aliquam tincidunt mauris eu risus.</li>
-            </ul>
-
-\t\t\t\t<pre><code>
-                        #header h1 a {
-                        display: block;
-                        width: 300px;
-                        height: 80px;
-                        }
-                    </code></pre>
         </div>
-    </div>
+    </form>
 ";
     }
 
-    // line 60
+    // line 52
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 61
+        // line 53
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script src=\"";
-        // line 62
+        // line 54
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/balancescrapy/js/bwizard.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\">
@@ -131,6 +123,6 @@ class __TwigTemplate_12a45e6eb1fa9d5bb39849469183de43d875ef57d8f85ff5ca615e415d0
 
     public function getDebugInfo()
     {
-        return array (  114 => 62,  109 => 61,  106 => 60,  51 => 8,  48 => 7,  42 => 5,  38 => 4,  33 => 3,  30 => 2,);
+        return array (  106 => 54,  101 => 53,  98 => 52,  51 => 8,  48 => 7,  42 => 5,  38 => 4,  33 => 3,  30 => 2,);
     }
 }
