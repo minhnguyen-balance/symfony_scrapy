@@ -1,3 +1,6 @@
 balance_scrapy_homepage:
     pattern:  /spider
     defaults: { _controller: BalanceScrapyBundle:Spider:index }
+balance_scrapy_content:
+    pattern:  /spider/content
+    defaults: { _controller: BalanceScrapyBundle:Spider:content }

@@ -135,9 +135,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // balance_scrapy_homepage
-        if ($pathinfo === '/spider') {
-            return array (  '_controller' => 'Balance\\ScrapyBundle\\Controller\\SpiderController::indexAction',  '_route' => 'balance_scrapy_homepage',);
+        if (0 === strpos($pathinfo, '/spider')) {
+            // balance_scrapy_homepage
+            if ($pathinfo === '/spider') {
+                return array (  '_controller' => 'Balance\\ScrapyBundle\\Controller\\SpiderController::indexAction',  '_route' => 'balance_scrapy_homepage',);
+            }
+
+            // balance_scrapy_content
+            if ($pathinfo === '/spider/content') {
+                return array (  '_controller' => 'Balance\\ScrapyBundle\\Controller\\SpiderController::contentAction',  '_route' => 'balance_scrapy_content',);
+            }
+
         }
 
         // _welcome

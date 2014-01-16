@@ -93,7 +93,7 @@ class __TwigTemplate_292fcd87405f4c9a3e40da10fb5b1ea6325a89fbc410e1748ee991eed5a
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src=\"https://code.jquery.com/jquery-1.10.2.min.js\"></script>
+<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\"></script>
 ";
         // line 73
         $this->displayBlock('javascripts', $context, $blocks);
