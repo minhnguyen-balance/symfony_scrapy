@@ -171,7 +171,7 @@ class __TwigTemplate_12a45e6eb1fa9d5bb39849469183de43d875ef57d8f85ff5ca615e415d0
                     var finished_items = [];
                     \$.each(data.finished, function(key, val) {
                         finished_spiders.push(val.spider);
-                        finished_items.push('<li>' + val.spider + '&nbsp;&nbsp;<a href=\"' + scrapyd_url + 'logs/' + project_name + '/' + val.spider + '/' + val.id + '.log\">log</a>' + '&nbsp;&nbsp;<a href=\"' + scrapyd_url + 'items/' + project_name + '/' + val.spider + '/' + val.id + '.jl\">items</a></li>');
+                        finished_items.push('<li>' + val.spider + '&nbsp;&nbsp;<a href=\"' + scrapyd_url + 'logs/' + project_name + '/' + val.spider + '/' + val.id + '.log\">log</a>' + '&nbsp;&nbsp;<a href=\"' + scrapyd_url + 'items/' + project_name + '/' + val.spider+ '/' + val.id + '.csv\">items</a></li>');
                     });
                     \$('#finished_spiders').append(finished_items.join(''));
 
