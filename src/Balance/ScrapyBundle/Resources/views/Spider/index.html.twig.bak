@@ -11,42 +11,45 @@
         <div id="wizard">
 
             <ol>
-                <li>Common Settings</li>
+                <li>URL Settings</li>
+                <li>Category Settings</li>
+                <li>Product Settings</li>
             </ol>
             <div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">URL spider site</label>
                     <div class="col-sm-10">
-                        <input type="url_spider" class="form-control" id="url_spider" placeholder="http://www.nicks.com.au/store/australian-wines/">
+                        <input type="email" class="form-control" id="inputEmail3">
                     </div>
                 </div>
-                {#<div class="form-group">
+            </div>
+            <div>
+                <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Category Pattern</label>
                     <div class="col-sm-10">
                         <input type="email" class="form-control" id="inputEmail3">
                     </div>
-                </div>#}
+                </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Products List Pattern</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Product Pattern</label>
                     <div class="col-sm-10">
-                        <input type="product_list_pattern" class="form-control" id="product_list_pattern" placeholder="//div[@class='category-products']/ul">
+                        <input type="email" class="form-control" id="inputEmail3">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Next URL Pattern</label>
                     <div class="col-sm-10">
-                        <input type="next_url_pattern" class="form-control" id="next_url_pattern" placeholder="//a[@class='next i-next']/@href">
+                        <input type="email" class="form-control" id="inputEmail3">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"></label>
-                    <button type="button" class="btn btn-primary" id="symfony_start_spider">Start Spider</button>
-                </div>
+            </div>
+            <div>
+                <p>Product Settings</p>
             </div>
 
         </div>
         <div id="spider-controls">
-            <a href="{{ currentUrl }}" onClick="window.location.reload" style="display: none;margin-bottom: 10px" id="ajax-load"><img src="{{ asset('bundles/balancescrapy/img/ajax-loader.gif') }}" /></a>
+            <a href="{{ currentUrl }}" onClick="window.location.reload"><i class="icon-large icon-refresh"></i></a>
             <br />
             List of running spiders
             <ul id="running_spiders"></ul>
@@ -66,48 +69,41 @@
         var scrapyd_url = 'http://localhost:6800/';
         // Your scrapyd project name
         var project_name = 'australia_wine';
-        var spider_name = 'winespider';
 
         var all_spiders = new Array();
         var running_spiders = new Array();
         var finished_spiders = new Array();
 
         $(document).ready(function() {
-            $("#symfony_start_spider").live('click', function() {
-                setTimeOutRefresh();
+            $(".start_spider").live('click', function() {
+                spider_name = $(this).attr('rel');
                 $.post(scrapyd_url + 'schedule.json', {
                     project : project_name,
                     spider : spider_name
                 });
+                location.href = "{{ currentUrl }}";
             });
 
             $(".stop_spider").live('click', function() {
-                setTimeOutRefresh();
                 job_id = $(this).attr('rel');
                 $.post(scrapyd_url + 'cancel.json', {
                     project : project_name,
                     job : job_id
                 });
+                location.href = "{{ currentUrl }}";
             });
             $(".delete_spider").live('click', function() {
-                setTimeOutRefresh();
                 $.post(scrapyd_url + 'delproject.json', {
                     project : project_name
                 });
-
+                location.href = "{{ currentUrl }}";
             });
-            function setTimeOutRefresh() {
-                $('#ajax-load').show();
-                setTimeout(function() {
-                    location.href = "{{ currentUrl }}";
-                },5000);
-            }
             function listjobs() {
                 $.getJSON(scrapyd_url + 'listjobs.json?project=' + project_name, function(data) {
                     var finished_items = [];
                     $.each(data.finished, function(key, val) {
                         finished_spiders.push(val.spider);
-                        finished_items.push('<li>' + val.spider +' ('+ val.start_time +')' + '&nbsp;&nbsp;<a href="' + scrapyd_url + 'logs/' + project_name + '/' + val.spider + '/' + val.id + '.log">log</a>' + '&nbsp;&nbsp;<a href="' + scrapyd_url + 'items/' + project_name + '/' + val.spider+ '/' + val.id + '.csv">items</a></li>');
+                        finished_items.push('<li>' + val.spider + '&nbsp;&nbsp;<a href="' + scrapyd_url + 'logs/' + project_name + '/' + val.spider + '/' + val.id + '.log">log</a>' + '&nbsp;&nbsp;<a href="' + scrapyd_url + 'items/' + project_name + '/' + val.spider+ '/' + val.id + '.csv">items</a></li>');
                     });
                     $('#finished_spiders').append(finished_items.join(''));
 
@@ -141,8 +137,7 @@
                 var items = [];
                 //console.log(data);
                 $.each(data.spiders, function(key, val) {
-                    //items.push('<li id="' + val + '">' + val + '&nbsp;&nbsp;<a href="#" class="start_spider" rel="'+ val + '">start</a>&nbsp;&nbsp;<a href="#" class="delete_spider" rel="'+ val + '">delete</a></li>');
-                    items.push('<li id="' + val + '">' + val + '&nbsp;&nbsp;<a href="#" class="delete_spider" rel="'+ val + '">delete</a></li>');
+                    items.push('<li id="' + val + '">' + val + '&nbsp;&nbsp;<a href="#" class="start_spider" rel="'+ val + '">start</a>&nbsp;&nbsp;<a href="#" class="delete_spider" rel="'+ val + '">delete</a></li>');
                 });
 
                 $('#available_spiders').append(items.join(''));
